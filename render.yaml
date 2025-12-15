@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: ai-content-generator
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn api:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.18  # Use Python 3.9 for compatibility
+    healthCheckPath: /health
+    autoDeploy: true
